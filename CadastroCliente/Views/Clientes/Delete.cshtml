@@ -1,0 +1,74 @@
+﻿@model CadastroCliente.Models.Cliente
+
+@{
+    ViewBag.Title = "Excluir";
+}
+
+<h2>Excluir</h2>
+
+<h3>Tem certeza de que deseja excluir este cliente?</h3>
+<div>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Nome)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Nome)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Cpf)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Cpf)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.DataNascimento)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.DataNascimento)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Genero)
+		</dt>
+
+		@if (Model.Genero == "M")
+		{
+			<dd>Masculino</dd>
+		}
+		else if (Model.Genero == "F")
+		{
+			<dd>Feminino</dd>
+		}
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Telefones)
+		</dt>
+
+		@foreach (var item in Model.Telefones)
+		{
+			<dd>
+				<p>(@item.DDD) @item.Numero</p>
+			</dd>
+		}
+
+	</dl>
+
+	<br />
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="form-actions no-color">
+			<input type="button" value="Voltar" onclick="location.href='@Url.Action("Index", "Clientes")'" class="btn btn-default" />
+			<input type="submit" value="Excluir" class="btn btn-danger" />
+		</div>
+	}
+</div>

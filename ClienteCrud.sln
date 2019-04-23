@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiCliente", "ApiCliente\ApiCliente.csproj", "{6CAD02A1-B344-4B2A-BDAC-B532EB4A0171}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroCliente", "CadastroCliente\CadastroCliente.csproj", "{4205B1C0-41DE-4B3C-B955-A93C7BE5541E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CAD02A1-B344-4B2A-BDAC-B532EB4A0171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CAD02A1-B344-4B2A-BDAC-B532EB4A0171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CAD02A1-B344-4B2A-BDAC-B532EB4A0171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CAD02A1-B344-4B2A-BDAC-B532EB4A0171}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4205B1C0-41DE-4B3C-B955-A93C7BE5541E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4205B1C0-41DE-4B3C-B955-A93C7BE5541E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4205B1C0-41DE-4B3C-B955-A93C7BE5541E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4205B1C0-41DE-4B3C-B955-A93C7BE5541E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E36C2BA-D8C4-4246-B0D8-AB615FA892DF}
+	EndGlobalSection
+EndGlobal

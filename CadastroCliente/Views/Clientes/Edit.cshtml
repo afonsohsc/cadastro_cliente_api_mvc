@@ -1,0 +1,96 @@
+﻿@model CadastroCliente.Models.Cliente
+
+@{
+	ViewBag.Title = "Editar Cliente";
+}
+
+<h2>Editar</h2>
+
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+	<div class="form-horizontal">
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		@Html.HiddenFor(model => model.Id)
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nome completo", maxlength = "300" } })
+				@Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Cpf, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control", placeholder = "000.000.000-00", data_mask = "000.000.000-00", maxlength = "15" } })
+				@Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control", placeholder = "__/__/____", data_mask = "00/00/0000", maxlength = "10" } })
+				@Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Genero, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.RadioButtonFor(model => model.Genero, "M")Masculino
+				@Html.RadioButtonFor(model => model.Genero, "F")Feminino
+				@Html.ValidationMessageFor(model => model.Genero, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Telefones, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				<div class="col-md-2">
+					<button class="btn btn-primary btn-group-sm" id="btn-add-telefone">Novo telefone</button>
+				</div>
+				<div class="col-md-8" id="div-telefones">
+					@for (int i = 0; i < Model.Telefones.Count; i++)
+					{
+						<div class="row">
+							<div class="col-md-2">
+								@Html.HiddenFor(model => model.Telefones[i].Id, new { @class = "hid-id" })
+								@Html.EditorFor(model => model.Telefones[i].DDD, new { htmlAttributes = new { @class = "form-control txt-ddd", placeholder = "DDD", maxlength = "2" } })
+							</div>
+							<div class="col-md-6">
+								@Html.EditorFor(model => model.Telefones[i].Numero, new { htmlAttributes = new { @class = "form-control txt-numero", placeholder = "Número", data_mask = "00000-0000", data_mask_reverse = "true", maxlength = "10" } })
+							</div>
+							<div class="col-md-1">
+								<button class="btn btn-danger btn-remover-telefone" idTelefone="@Model.Telefones[i].Id" idCliente="@Model.Id">
+									<span class="glyphicon glyphicon-trash"></span>
+								</button>
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-10">
+				<input type="button" class="btn btn-default" value="Voltar" onclick="location.href='@Url.Action("Index", "Clientes")'" />
+				<input type="submit" value="Salvar" class="btn btn-success" />
+			</div>
+        </div>
+
+	</div>
+
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/edicao-telefones.js"></script>
+<script src="~/Scripts/jquery.mask.min.js"></script>
+

@@ -1,0 +1,67 @@
+﻿@model CadastroCliente.Models.Cliente
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Nome)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Nome)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Cpf)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Cpf)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.DataNascimento)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.DataNascimento)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Genero)
+		</dt>
+
+		@if (Model.Genero == "M")
+		{
+			<dd>Masculino</dd>
+		}
+		else if (Model.Genero == "F")
+		{
+			<dd>Feminino</dd>
+		}
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Telefones)
+		</dt>
+
+		@foreach (var item in Model.Telefones)
+		{
+			<dd>
+				<p>(@item.DDD) @item.Numero</p>
+			</dd>
+		}
+
+
+	</dl>
+</div>
+<br />
+<p>
+	<input type="button" value="Voltar" onclick="location.href='@Url.Action("Index", "Clientes")'" class="btn btn-default" />
+	<input type="button" value="Editar" onclick="location.href='@Url.Action("Edit", "Clientes", new {id = Model.Id})'" class="btn btn-warning" />
+</p>
